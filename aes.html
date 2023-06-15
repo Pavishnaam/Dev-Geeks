@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AES Encryption/Decryption</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <h2>AES Encryption/Decryption</h2>
+
+    <div>
+        <h3>Encryption</h3>
+        <label for="msg">Message:</label>
+        <input type="text" id="msg" placeholder="Enter message">
+        <br>
+        <label for="key">Key:</label>
+        <input type="password" id="key" placeholder="Enter key">
+        <br>
+        <button onclick="encrypt()">Encrypt</button>
+        <br><br>
+        <label for="cipher">Cipher Text:</label>
+        <br>
+        <input type="text" id="cipher" readonly>
+        <button onclick="copyToClipboard('cipher')">Copy</button>
+    </div>
+
+    <div>
+        <h3>Decryption</h3>
+        <label for="cipherText">Cipher Text:</label>
+        <input type="text" id="cipherText" placeholder="Enter cipher text">
+        <br>
+        <label for="decKey">Key:</label>
+        <input type="password" id="decKey" placeholder="Enter key">
+        <br>
+        <button onclick="decrypt()">Decrypt</button>
+        <br><br>
+        <label for="plain">Plain Text:</label>
+        <br>
+        <input type="text" id="plain" readonly>
+        <button onclick="copyToClipboard('plain')">Copy</button>
+    </div>
+
+    <script>
+        // AES Encryption
+        function encrypt() {
+            var message = document.getElementById("msg").value;
+            var key = document.getElementById("key").value;
+            var ciphertext = CryptoJS.AES.encrypt(message, key).toString();
+            document.getElementById("cipher").value = ciphertext;
+        }
+
+        // AES Decryption
+        function decrypt() {
+            var ciphertext = document.getElementById("cipherText").value;
+            var key = document.getElementById("decKey").value;
+            var bytes = CryptoJS.AES.decrypt(ciphertext, key);
+            var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+            document.getElementById("plain").value = plaintext;
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(elementId) {
+            var element = document.getElementById(elementId);
+            element.select();
+            document.execCommand("copy");
+            alert("Copied to clipboard!");
+        }
+    </script>
+</body>
+
+</html>

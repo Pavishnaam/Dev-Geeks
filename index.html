@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Color Guess Game</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-  <h1>Color Guess Game</h1>
-  <div class="container">
-    <div id="color-display"></div>
-    <div id="color-options">
-      <button class="color-btn"></button>
-      <button class="color-btn"></button>
-      <button class="color-btn"></button>
-    </div>
-    <p id="message"></p>
-    <button id="reset-btn">New Colors</button>
-  </div>
 
-  <script src="script.js"></script>
+<head>
+    <title>QR Code Reader</title>
+    <style>
+        #video {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>QR Code Reader</h1>
+    <video id="video" playsinline></video>
+
+    <script src="https://rawgit.com/dwa012/html5-qrcode/master/html5-qrcode.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
